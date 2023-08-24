@@ -10,6 +10,8 @@
 
 - useCallback() is solution for skiping recreating function objects, function object is stored in same place in memory.
 
+- useMemo is for arrays something like React.memo for components props and usecallback for functions.
+
 - https://academind.com/tutorials/reference-vs-primitive-values/
 
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
