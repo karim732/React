@@ -11,3 +11,6 @@ DemoApp2 - meals order app - useState, useEffect, useReducer, useContext, usePor
 BehindscenesOptimization - Readme, useMemo - useMemo is for arrays something like usecallback for functions.
 ClassBasedComponents - Readme, class based components, Error boundary only for class based components.
 HttpRequests - Readme, https get and post using firebase, fetch().
+Redux - Readme, Redux concept with simple example.
+ReduxReact - Readme, react redux and redux toolkit.
+ReduxAdvance - handling async func's with action creators(thunk) and component(useEffect).
