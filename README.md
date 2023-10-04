@@ -27,3 +27,5 @@
   <h2>{title}</h2>
   {children}
   </motion.dialog>
+
+- React Motion, React Move (alternative animation package)
