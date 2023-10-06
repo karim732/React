@@ -18,5 +18,7 @@ Drawback of ContextAPI
   2.  contextAPI(simple)
   3.  custom hook store(complex)(mix of useState, useEffect,..)
 
+- optimizing custom hook store.
+   
 - replace-redux-06-bonus-multiple-slices - where more than one state slice gets managed.
   You can also use it to manage multiple, independent state slices though.
