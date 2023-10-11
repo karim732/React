@@ -1,4 +1,10 @@
-import React, { useReducer, useState, useEffect, useCallback } from "react";
+import React, {
+  useReducer,
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+} from "react";
 
 import IngredientForm from "./IngredientForm";
 import Search from "./Search";
@@ -47,7 +53,7 @@ function Ingredients() {
     dispatch({ type: "SET", ingredients: filteredIngredients });
   }, []);
 
-  const addIngredientHandler = (ingredient) => {
+  const addIngredientHandler = useCallback((ingredient) => {
     // setIsLoading(true);
     dispatchHttp({ type: "SEND" });
     fetch(
@@ -75,8 +81,8 @@ function Ingredients() {
           ingredient: { id: responseData.name, ...ingredient },
         });
       });
-  };
-  const removeIngredienthandler = (id) => {
+  }, []);
+  const removeIngredienthandler = useCallback((id) => {
     // setIsLoading(true);
     dispatchHttp({ type: "SEND" });
     fetch(
@@ -98,11 +104,19 @@ function Ingredients() {
         // setIsLoading(false);
         dispatchHttp({ type: "ERROR", errorMessage: "Something went error!" });
       });
-  };
-  const clearError = () => {
+  }, []);
+  const clearError = useCallback(() => {
     // setError(null);
     dispatch({ type: "CLEAR" });
-  };
+  }, []);
+  const ingredientList = useMemo(() => {
+    return (
+      <IngredientList
+        ingredients={userIngredients}
+        onRemoveItem={removeIngredienthandler}
+      />
+    );
+  }, [userIngredients]);
   return (
     <div className="App">
       {httpState.error && (
@@ -115,10 +129,7 @@ function Ingredients() {
 
       <section>
         <Search onLoadIngredients={filteredIngredientsHandler} />
-        <IngredientList
-          ingredients={userIngredients}
-          onRemoveItem={removeIngredienthandler}
-        />
+        {ingredientList}
       </section>
     </div>
   );
